@@ -15,7 +15,7 @@ class ArticleController extends Controller
     // }
     //
     public function index(){
-
+        return view('admin.new-article');
     }
     public function storeArticle(Request $request){
 
