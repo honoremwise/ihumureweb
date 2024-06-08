@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website - Submit Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .toolbar {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+        .toolbar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-size: 16px;
+        }
+        .toolbar input[type="file"] {
+            display: none;
+        }
+        .editor {
+            flex: 1;
+            padding: 10px;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            outline: none;
+            font-size: 16px;
+        }
+        .submit-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <div class="toolbar">
+            <button type="button" onclick="formatText('bold')">Bold</button>
+            <button type="button" onclick="formatText('italic')">Italic</button>
+            <button type="button" onclick="formatText('underline')">Underline</button>
+            <button type="button" onclick="formatText('insertUnorderedList')">Bullet List</button>
+            <button type="button" onclick="formatText('insertOrderedList')">Numbered List</button>
+            <input type="file" id="imageUpload" onchange="previewImage()">
+            <button type="button" onclick="document.getElementById('imageUpload').click()">Upload Image</button>
+        </div>
+        <div class="editor" contenteditable="true"></div>
+        <button class="submit-button" onclick="submitContent()">Submit</button>
+    </div>
+
+    <script>
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        function previewImage() {
+            var file = document.getElementById('imageUpload').files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxWidth = "100%";
+                img.style.height = "auto";
+                img.style.margin = "10px 0";
+                document.querySelector('.editor').appendChild(img);
+                // Automatically upload the image after previewing
+                uploadImage(file);
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function uploadImage(file) {
+            var formData = new FormData();
+            formData.append('image', file);
+
+            fetch('upload_image.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    var imgs = document.querySelectorAll('.editor img');
+                    var lastImg = imgs[imgs.length - 1];
+                    lastImg.src = data.url;
+                } else {
+                    alert('Image upload failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function submitContent() {
+            var editorContent = document.querySelector('.editor').innerHTML;
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'submit_article.php';
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'content';
+            input.value = editorContent;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+</html>
