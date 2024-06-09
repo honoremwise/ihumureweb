@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -15,14 +17,19 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('user_role');
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
+        DB::table("users")->insert([
+            "name" => ENV('ADMIN_NAME'),
+            "password"=>Hash::make(ENV('ADMIN_PASSWORD')),
+            "email" =>ENV('ADMIN_EMAIL'),
+            "user_role" => ENV('ADMIN_ROLE_NAME'),
+            "created_at" => now(),
+            "updated_at" => now(),
+        ]);
     }
-
     /**
      * Reverse the migrations.
      */

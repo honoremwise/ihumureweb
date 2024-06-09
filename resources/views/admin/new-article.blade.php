@@ -1,7 +1,29 @@
 @extends('layouts.dashboard')
 @section('title','New Article')
 @section('content')
+<br />
+<div class="row">
+
 <div class="editor-container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
     <div class="input-field">
         <label for="title">Title</label>
         <input type="text" id="title" placeholder="Enter article title" class="form-control">
@@ -31,6 +53,7 @@
     </div>
     <div class="editor" contenteditable="true"></div>
     <button class="submit-button" onclick="submitContent()">Submit</button>
+</div>
 </div>
 <script>
     function formatText(command) {

@@ -1,283 +1,123 @@
 @extends('layouts.web')
-@section('title','Welcome')
+@section('title', 'Welcome')
 @section('content')
-        <!-- Top News Start-->
-        <div class="top-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 tn-left">
-                        <div class="row tn-slider">
-                            <div class="col-md-12">
-                                <div class="tn-img">
-                                    <img src="img/news-450x350-1.jpg" />
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="tn-img">
-                                    <img src="img/news-450x350-2.jpg" />
-                                    <div class="tn-title">
-                                        <a  href="">Integer hendrerit elit eget purus sodales maximus</a>
-                                    </div>
+<!-- Top News Start-->
+<div class="top-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 tn-left">
+                <div class="row tn-slider">
+                    @foreach ($articles as $article)
+                        <div class="col-md-12">
+                            <div class="tn-img">
+                                <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
+                                <div class="tn-title">
+                                  <a href="{{ route('show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
+                    @endforeach
                 </div>
             </div>
+
+
         </div>
-        <!-- Top News End-->
+    </div>
+</div>
+<div class="tab-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#featured">Siporo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#popular">Politike</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#latest">Ubekerarugendo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#music">Musika</a>
+                    </li>
+                </ul>
 
-        <!-- Category News Start-->
-        <!-- <div class="cat-news">
-            <div class="container"> -->
-                <!-- <div class="row">
-                    <div class="col-md-6">
-                        <h2>Sports</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                <div class="tab-content">
+                    <div id="featured" class="container tab-pane active">
+                        
+                        @foreach ($articles as $article)
+                        @if($article->category=='music')
+                        <div class="tn-news">
+                            <div class="tn-img">
+                            <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                            <div class="tn-title">
+                            <a href="{{ route('show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                            @endif
+                            @endforeach
                     </div>
-                    <div class="col-md-6">
-                        <h2>Technology</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-5.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-            <!-- </div>
-        </div> -->
-        <!-- Category News End-->
+                    <div id="popular" class="container tab-pane fade">
 
-        <!-- Category News Start-->
-        <!-- <div class="cat-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>Business</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-5.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                    @foreach ($articles as $article)
+                        @if($article->category=='politics')
+                        <div class="tn-news">
+                            <div class="tn-img">
+                            <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                            <div class="tn-title">
+                            <a href="{{ route('show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                            @endif
+                            @endforeach
                     </div>
-                    <div class="col-md-6">
-                        <h2>Entertainment</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                    <div id="latest" class="container tab-pane fade">
+                    @foreach ($articles as $article)
+                        @if($article->category=='tourism')
+                        <div class="tn-news">
+                            <div class="tn-img">
+                            <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
+                            <div class="tn-title">
+                            <a href="{{ route('show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                            @endif
+                            @endforeach
                     </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Category News End-->
-        dsds
-        <!-- Tab News Start-->
-        <div class="tab-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#featured">Featured News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#popular">Popular News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#latest">Latest News</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div id="featured" class="container tab-pane active">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
+                    <div id="music" class="container tab-pane fade">
+                    @foreach ($articles as $article)
+                        @if($article->category=='tourism')
+                        <div class="tn-news">
+                            <div class="tn-img">
+                            <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
                             </div>
-                            <div id="popular" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-5.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
+                            <div class="tn-title">
+                            <a href="{{ route('show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                             </div>
-                            <div id="latest" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                            @endif
+                            @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Tab News Start-->
+    </div>
+</div>
+<!-- Tab News Start-->
 
-        <!-- Main News Start-->
-        <div class="main-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
+<!-- Main News Start-->
+<div class="main-news">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-lg-9">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-1.jpg" />
+                                    <img src="{{ asset('assets/img/news-350x223-1.jpg') }}" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -285,7 +125,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-2.jpg" />
+                                    <img src="{{ asset('assets/img/news-350x223-2.jpg') }}" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -293,7 +133,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-3.jpg" />
+
+                                    <img src="assets/img/news-350x223-3.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -301,7 +142,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-4.jpg" />
+                                    <img src="assets/img/news-350x223-4.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -309,7 +150,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-5.jpg" />
+                                    <img src="assets/img/news-350x223-5.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -317,7 +158,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-1.jpg" />
+                                    <img src="assets/img/news-350x223-1.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -325,7 +166,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-2.jpg" />
+                                    <img src="assets/img/news-350x223-2.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -333,7 +174,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-3.jpg" />
+                                    <img src="assets/img/news-350x223-3.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
@@ -341,16 +182,16 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-4.jpg" />
+                                    <img src="assets/img/news-350x223-4.jpg" />
                                     <div class="mn-title">
                                         <a href="">Lorem ipsum dolor sit</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                         <div class="mn-list">
                             <h2>Read More</h2>
                             <ul>
@@ -366,9 +207,9 @@
                                 <li><a href="">Curabitur vel lectus</a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
         </div>
-        <!-- Main News End-->
+    </div>
+</div>
+<!-- Main News End-->
 @endsection

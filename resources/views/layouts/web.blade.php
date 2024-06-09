@@ -20,7 +20,7 @@
         <link href="{{ asset('assets/lib/slick/slick-theme.css') }}" rel="stylesheet">
         <!-- Template Stylesheet -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
 
     <body>
@@ -30,8 +30,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="tb-contact">
-                            <p><i class="fas fa-envelope"></i>info@mail.com</p>
-                            <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
+                            <p><i class="fas fa-envelope"></i>ihumure@gmail.com</p>
+                            <!-- <p><i class="fas fa-phone-alt"></i>+012 345 6789</p> -->
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -53,23 +53,23 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4">
                         <div class="b-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="assets/img/logo.png" alt="Logo">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4">
-                        <div class="b-ads">
+                        <!-- <div class="b-ads">
                             <a href="/">
                                 <img src="assets/img/ads-1.jpg" alt="Ads">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-3 col-md-4">
-                        <div class="b-search">
+                        <!-- <div class="b-search">
                             <input type="text" placeholder="Search">
                             <button><i class="fa fa-search"></i></button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Ahabanza</a>
+                            <a href="/" class="nav-item nav-link active">Ahabanza</a>
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                                 <div class="dropdown-menu">
@@ -97,16 +97,16 @@
                             </div> -->
                             <a href="single-page.html" class="nav-item nav-link">Ubukerarugendo</a>
                             <a href="single-page.html" class="nav-item nav-link">Politics</a>
-                            <a href="single-page.html" class="nav-item nav-link">Single Page</a>
+                            <!-- <a href="single-page.html" class="nav-item nav-link">Single Page</a> -->
                             <a href="single-page.html" class="nav-item nav-link">Sport</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                            <!-- <a href="contact.html" class="nav-item nav-link">Contact Us</a> -->
                         </div>
                         <div class="social ml-auto">
-                            <a href=""><i class="fab fa-twitter"></i></a>
+                            <!-- <a href=""><i class="fab fa-twitter"></i></a>
                             <a href=""><i class="fab fa-facebook-f"></i></a>
                             <a href=""><i class="fab fa-linkedin-in"></i></a>
                             <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-youtube"></i></a>
+                            <a href=""><i class="fab fa-youtube"></i></a> -->
                         </div>
                     </div>
                 </nav>
@@ -117,71 +117,48 @@
         <div class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="footer-widget">
-                            <h3 class="title">Get in Touch</h3>
-                            <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 News Street, NY, USA</p>
-                                <p><i class="fa fa-envelope"></i>info@example.com</p>
-                                <p><i class="fa fa-phone"></i>+123-456-7890</p>
-                                <div class="social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                    <a href=""><i class="fab fa-youtube"></i></a>
-                                </div>
+                            <h3 class="title">Get in Touchs</h3>
+                            <div class="contact-info" style="color:aliceblue">
+                            ihumure.rw ni urubuga rwatangiye muri 2023 hashyira 2024 rufite intego zo gutangaza amakuru y’umwihariko abamenyesha ibibera hirya no hino. Kuva icyo gihe kugera ubu, ntituradohoka.
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="footer-widget">
-                            <h3 class="title">Useful Links</h3>
+                            <h3 class="title">Useful Tourism Links</h3>
                             <ul>
-                                <li><a href="#">Lorem ipsum</a></li>
-                                <li><a href="#">Pellentesque</a></li>
-                                <li><a href="#">Aenean vulputate</a></li>
-                                <li><a href="#">Vestibulum sit amet</a></li>
-                                <li><a href="#">Nam dignissim</a></li>
+                                <li><a href="https://rdb.rw/">RDB</a></li>
+                                <li><a href="https://www.oneandonlyresorts.com/">One and Only</a></li>
+                                <li><a href="https://visitrwanda.com/tourism/">Visit Rwanda</a></li>
+                                <li><a href="https://visitrwanda.com/interests/kings-palace/">Ancient King Palace</a></li>
+                                <li><a href="https://rcb.rw/">Kigali Convetion Center</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="footer-widget">
-                            <h3 class="title">Quick Links</h3>
+                            <h3 class="title">Rwanda Sport Links</h3>
                             <ul>
-                                <li><a href="#">Lorem ipsum</a></li>
-                                <li><a href="#">Pellentesque</a></li>
-                                <li><a href="#">Aenean vulputate</a></li>
-                                <li><a href="#">Vestibulum sit amet</a></li>
-                                <li><a href="#">Nam dignissim</a></li>
+                                <li><a href="https://www.ferwafa.rw/">Ferwafa</a></li>
+                                <li><a href="https://rayonsports.rw/">Rayon Sport</a></li>
+                                <li><a href="https://www.aprfc.rw/">APR FC</a></li>
+                                <li><a href="https://www.facebook.com/MukuraVS1963/">Mukura FC</a></li>
+                                <li><a href="https://www.facebook.com/OfficialSCKiyovuSports/">Kiyovu FC</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <h3 class="title">Newsletter</h3>
-                            <div class="newsletter">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed porta dui. Class aptent taciti sociosqu
-                                </p>
-                                <form>
-                                    <input class="form-control" type="email" placeholder="Your email here">
-                                    <button class="btn">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- Footer End -->
 
         <!-- Footer Menu Start -->
-        <div class="footer-menu">
+        <!-- <div class="footer-menu">
             <div class="container">
                 <div class="f-menu">
                     <a href="">Terms of use</a>
@@ -192,7 +169,7 @@
                     <a href="">Contact us</a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Footer Menu End -->
 
         <!-- Footer Bottom Start -->
@@ -200,13 +177,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="">Your Site Name</a>. All Rights Reserved</p>
+                        <p>Copyright &copy; <a href="">ihumure.com</a>. All Rights Reserved</p>
                     </div>
 
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <div class="col-md-6 template-by">
+                    <!-- <div class="col-md-6 template-by">
                         <p>Designed By <a href="#">HTML Codex</a></p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -9,17 +9,24 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth')->except('register');
-    // }
-    //
+    public function __construct()
+    {
+        $this->middleware('auth')->except('home');
+    }
     public function index(){
-        return view('admin.new-article');
+    $articles = Article::orderBy('created_at', 'desc')->get();
+    return view('admin.articles', compact('articles')); 
+    }
+    public function home(){
+        $articles = Article::orderBy('created_at', 'desc')->get();
+        return view('index', compact('articles')); 
+    }
+    public function getArticle($slug){
+        $article = Article::where('slug', $slug)->first();
+        $articles = Article::where('category', $article->category)->get();
+        return view('single_page', compact('article','articles')); 
     }
     public function storeArticle(Request $request){
-
-// return $request->all();
         $messages = [
             'title.required' => 'The title field is required.',
             'contents.required' => 'content field is required.',
@@ -41,7 +48,7 @@ class ArticleController extends Controller
         $slug = str_replace(' ', '-', $modified_title);
         $file = $request->file('featured_image');
         $fileExtension = $file->getClientOriginalExtension();
-        $fileName = '1_' . $request->business_tin_number . '_' . $request->business_telephone . '_' . $request->business_name . '_rdb_certificate.' . $fileExtension;
+        $fileName = Auth::user()->id . '_'. $slug . $fileExtension;
         $filePath = 'images/' . $fileName;
         $file->move(public_path('images'), $fileName);
         $new_article = new Article();
@@ -50,11 +57,10 @@ class ArticleController extends Controller
         $new_article->slug = $slug;
         $new_article->featured_image = $filePath;
         $new_article->category = $request->category;
-        // $new_article->writer_id = Auth::user()->id;
         $new_article->published_status = 'pending';
         $new_article->writer_id = 1;
         $new_article->save();
-
-        return back()->with('success', 'Image uploaded successfully.')->with('image', $new_article);
+        // return "hihi";
+        return redirect('/articles'); 
     }
 }

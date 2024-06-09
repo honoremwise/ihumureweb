@@ -13,13 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', function () {
-    return view('bootstrap-news-template.index');
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/new-article-frm', function () {
+    return view('admin.new-article');
 });
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+Route::get('/', [\App\Http\Controllers\ArticleController::class, 'home'])->name('home');
+Route::get('/new-article', [\App\Http\Controllers\ArticleController::class, 'index']);
 Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index']);
 Route::post('/new-article', [\App\Http\Controllers\ArticleController::class, 'storeArticle']);
 Route::post('/article-images', [\App\Http\Controllers\ArticleController::class, 'storeArticleImage']);
+Route::post('/login', [\App\Http\Controllers\HomeController::class, 'login']);
+Route::get('/logout', [\App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
+Route::get('/articles/{slug}', [\App\Http\Controllers\ArticleController::class, 'getArticle'])->name('show');
+// Route::get('/articles/{slug}', 'ArticleController@show')->name('show');
