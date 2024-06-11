@@ -8,6 +8,7 @@
             <div class="col-md-12 tn-left">
                 <div class="row tn-slider">
                     @foreach ($articles as $article)
+                    @if($article->category=='sport')
                         <div class="col-md-12">
                             <div class="tn-img">
                                 <img src="{{ asset($article->featured_image) }}"  alt="{{ $article->title }}" />
@@ -16,6 +17,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

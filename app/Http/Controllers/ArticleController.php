@@ -11,20 +11,20 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('home');
+        $this->middleware('auth')->except('home','getArticle');
     }
     public function index(){
     $articles = Article::orderBy('created_at', 'desc')->get();
-    return view('admin.articles', compact('articles')); 
+    return view('admin.articles', compact('articles'));
     }
     public function home(){
         $articles = Article::orderBy('created_at', 'desc')->get();
-        return view('index', compact('articles')); 
+        return view('index', compact('articles'));
     }
     public function getArticle($slug){
         $article = Article::where('slug', $slug)->first();
         $articles = Article::where('category', $article->category)->get();
-        return view('single_page', compact('article','articles')); 
+        return view('single_page', compact('article','articles'));
     }
     public function storeArticle(Request $request){
         $messages = [
@@ -61,6 +61,6 @@ class ArticleController extends Controller
         $new_article->writer_id = 1;
         $new_article->save();
         // return "hihi";
-        return redirect('/articles'); 
+        return redirect('/articles');
     }
 }

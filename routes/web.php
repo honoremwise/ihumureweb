@@ -32,3 +32,7 @@ Route::post('/login', [\App\Http\Controllers\HomeController::class, 'login']);
 Route::get('/logout', [\App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 Route::get('/articles/{slug}', [\App\Http\Controllers\ArticleController::class, 'getArticle'])->name('show');
 // Route::get('/articles/{slug}', 'ArticleController@show')->name('show');
+Route::get('/ubukerarugendo', [\App\Http\Controllers\ArticleController::class, 'home'])->name('ubukerarugendo');
+Route::get('/siporo', [\App\Http\Controllers\ArticleController::class, 'home'])->name('siporo');
+Route::get('/muzika', [\App\Http\Controllers\ArticleController::class, 'home'])->name('muzika');
+Route::get('/politike', [\App\Http\Controllers\ArticleController::class, 'home'])->name('politike');
